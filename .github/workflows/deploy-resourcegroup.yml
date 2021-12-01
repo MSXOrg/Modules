@@ -33,3 +33,15 @@ jobs:
           azPSVersion: 'latest'
           inlineScript: | 
             Get-AzSubscription
+
+      - name: Deploy Azure Resource Manager (ARM) Template
+        uses: Azure/arm-deploy@v1
+        with:
+          # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
+          scope: 'subscription'
+          # Provide the target region, only required for management Group or Subscription deployments.
+          region: 'westeurope'
+          # Specify the path or URL to the Azure Resource Manager template.
+          template: 
+          # Supply deployment parameter values.
+          parameters: 
