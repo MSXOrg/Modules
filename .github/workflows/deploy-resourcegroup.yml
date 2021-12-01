@@ -24,7 +24,7 @@ jobs:
       - name: Install Azure PowerShell
         shell: pwsh
         run: |
-          Get-Module -ListAvailable
+          Get-Module -ListAvailable -All
 
       - uses: Azure/login@v1
         with:
@@ -35,5 +35,5 @@ jobs:
         with:
           scope: 'subscription'
           region: 'westeurope'
-          template: 'Modules/Modules/ResourceGroup/deploy.bicep'
-          parameters: 'Modules/Parameters/parameters-swatiRG.json'
+          template: 'Modules/ResourceGroup/deploy.bicep'
+          parameters: 'Parameters/parameters-swatiRG.json'
