@@ -19,7 +19,12 @@ jobs:
         shell: pwsh
         run: |
           (Get-ChildItem -Recurse -Path $GITHUB_WORKSPACE).FullName
-          Get-ChildItem env
+          Get-ChildItem env:
+
+      - name: Install Azure PowerShell
+        shell: pwsh
+        run: |
+          Get-Module -ListAvailable
 
       - uses: Azure/login@v1
         with:
@@ -30,5 +35,5 @@ jobs:
         with:
           scope: 'subscription'
           region: 'westeurope'
-          template: 'Modules\Modules\ResourceGroup\deploy.bicep'
-          parameters: 'Modules\Parameters\parameters-swatiRG.json'
+          template: 'Modules/Modules/ResourceGroup/deploy.bicep'
+          parameters: 'Modules/Parameters/parameters-swatiRG.json'
