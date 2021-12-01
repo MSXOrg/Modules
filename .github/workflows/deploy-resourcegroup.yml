@@ -42,6 +42,6 @@ jobs:
           # Provide the target region, only required for management Group or Subscription deployments.
           region: 'westeurope'
           # Specify the path or URL to the Azure Resource Manager template.
-          template: 'Modules\ResourceGroup\deploy.bicep'
+          template: 'Modules\Modules\ResourceGroup\deploy.bicep'
           # Supply deployment parameter values.
-          parameters: 'Parameters\parameters-swatiRG.json'
+          parameters: 'Modules\Parameters\parameters-swatiRG.json'
