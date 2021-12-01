@@ -25,13 +25,13 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
-      
+
       - name: Azure PowerShell Action
         uses: Azure/powershell@v1
         with:
           # Specify the Az PowerShell script here.
           azPSVersion: 'latest'
-          inlineScript: | 
+          inlineScript: |
             Get-AzSubscription
 
       - name: Deploy Azure Resource Manager (ARM) Template
@@ -42,6 +42,6 @@ jobs:
           # Provide the target region, only required for management Group or Subscription deployments.
           region: 'westeurope'
           # Specify the path or URL to the Azure Resource Manager template.
-          template: 
+          template: 'Modules\ResourceGroup\deploy.bicep'
           # Supply deployment parameter values.
-          parameters: 
+          parameters: 'Parameters\parameters-swatiRG.json'
