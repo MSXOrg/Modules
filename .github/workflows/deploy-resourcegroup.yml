@@ -18,3 +18,13 @@ jobs:
       - name: Run a one-line script
         shell: pwsh
         run: Write-Output "Hello World - Marius"
+
+      - name: Azure Login
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
+      
+      - name: Run a one-line script
+        shell: pwsh
+        run: Get-AzSubscription
