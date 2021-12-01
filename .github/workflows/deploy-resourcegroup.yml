@@ -18,7 +18,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         shell: pwsh
-        run: Write-Output "Hello World - Marius"
+        run: (Get-ChildItem -Recurse -Path $GITHUB_WORKSPACE).FullName
 
       - name: Azure Login
         uses: Azure/login@v1
