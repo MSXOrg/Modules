@@ -30,5 +30,6 @@ jobs:
         uses: Azure/powershell@v1
         with:
           # Specify the Az PowerShell script here.
+          azPSVersion: 'latest'
           inlineScript: | 
             Get-AzSubscription
