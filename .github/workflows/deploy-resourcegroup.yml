@@ -15,6 +15,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Check content in runner
+        shell: pwsh
+        run: |
+          (Get-ChildItem -Recurse -Path $GITHUB_WORKSPACE).FullName
+          Get-ChildItem env
+
       - uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
@@ -24,6 +30,5 @@ jobs:
         with:
           scope: 'subscription'
           region: 'westeurope'
-          template: './Modules/ResourceGroup/deploy.bicep'
-          # Supply deployment parameter values.
-          parameters: './Modules/Parameters/parameters-swatiRG.json'
+          template: 'Modules\Modules\ResourceGroup\deploy.bicep'
+          parameters: 'Modules\Parameters\parameters-swatiRG.json'
