@@ -15,33 +15,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        shell: pwsh
-        run: (Get-ChildItem -Recurse -Path $GITHUB_WORKSPACE).FullName
-
-      - name: Azure Login
-        uses: Azure/login@v1
+      - uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          enable-AzPSSession: true
-
-      - name: Azure PowerShell Action
-        uses: Azure/powershell@v1
-        with:
-          # Specify the Az PowerShell script here.
-          azPSVersion: 'latest'
-          inlineScript: |
-            Get-AzSubscription
 
       - name: Deploy Azure Resource Manager (ARM) Template
         uses: Azure/arm-deploy@v1
         with:
-          # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
           scope: 'subscription'
-          # Provide the target region, only required for management Group or Subscription deployments.
           region: 'westeurope'
-          # Specify the path or URL to the Azure Resource Manager template.
-          template: 'Modules\Modules\ResourceGroup\deploy.bicep'
+          template: './Modules/ResourceGroup/deploy.bicep'
           # Supply deployment parameter values.
-          parameters: 'Modules\Parameters\parameters-swatiRG.json'
+          parameters: './Modules/Parameters/parameters-swatiRG.json'
