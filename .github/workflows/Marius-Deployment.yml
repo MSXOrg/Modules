@@ -1,7 +1,11 @@
 name: Marius Resource Group deployment
 
 # Controls when the workflow will run
-on: [push]
+on:
+  push:
+    paths:
+      - ".github/workflows/Marius-Deployment.yml"
+      - "Parameters/Marius/**"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
