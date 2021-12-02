@@ -35,7 +35,7 @@ jobs:
       - name: Deploy Azure Resource Manager (ARM) Template
         uses: Azure/arm-deploy@v1
         with:
-          scope: 'resourceGroup'
+          scope: 'resourcegroup'
           region: 'westeurope'
           template: 'Modules/StorageAccount/deploy.bicep'
           parameters: 'Parameters/Swati/storageAccount.parameters'
