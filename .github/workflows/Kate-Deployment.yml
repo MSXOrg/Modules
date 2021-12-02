@@ -25,5 +25,5 @@ jobs:
           scope: 'subscription'
           region: 'westeurope'
           template: 'Modules/ResourceGroup/deploy.bicep'
-          parameters: 'Parameters/Kate/resourceGroup.parameters.json'
+          parameters: 'Parameters/Kate/parameters1.json'
 
