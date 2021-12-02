@@ -4,8 +4,10 @@ name: Marius Nested RG and SA deployment
 on:
   push:
     paths:
-      - ".github/workflows/Marius-Deployment.yml"
-      - "Parameters/Marius/**"
+      - ".github/workflows/Marius-NestedDeployment.yml"
+      - "Parameters/Marius/rgandsa.parameters.json"
+      - "Solutions/**"
+      - "Modules/**"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

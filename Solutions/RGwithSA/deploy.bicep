@@ -13,11 +13,14 @@ module rg '../../Modules/ResourceGroup/deploy.bicep' = {
 }
 
 module storageAccount '../../Modules/StorageAccount/deploy.bicep' = {
+    scope: resourceGroup(name)
     name: '${name}-sa-deployment'
-    scope: resourceGroup(rg.name)
     params: {
         name: '${name}sathing'
     }
+    dependsOn: [
+        rg
+    ]
 }
 
 output resourceGroupName string = rg.name
