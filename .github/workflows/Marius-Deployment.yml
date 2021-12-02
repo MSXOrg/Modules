@@ -1,4 +1,4 @@
-name: Test Resource Group deployment
+name: Marius Resource Group deployment
 
 # Controls when the workflow will run
 on: [push]
@@ -25,5 +25,5 @@ jobs:
           scope: 'subscription'
           region: 'westeurope'
           template: 'Modules/ResourceGroup/deploy.bicep'
-          parameters: 'Parameters/parameters-swatiRG.json'
+          parameters: 'Parameters/Marius/resourceGroup.parameters.json'
 
