@@ -24,6 +24,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy Azure Resource Manager (ARM) Template
+        id: rgDeploy
         uses: Azure/arm-deploy@v1
         with:
           scope: 'subscription'
@@ -31,3 +32,11 @@ jobs:
           template: 'Modules/ResourceGroup/deploy.bicep'
           parameters: 'Parameters/Marius/resourceGroup.parameters.json'
 
+      - name: Deploy Azure Resource Manager (ARM) Template
+        uses: Azure/arm-deploy@v1
+        with:
+          scope: 'resourcegroup'
+          region: 'westeurope'
+          ResourceGroupName: '${{ steps.rgDeploy.outputs.name }}'
+          template: 'Modules/StorageAccount/deploy.bicep'
+          parameters: 'Parameters/Marius/storageAccount.parameters.json'

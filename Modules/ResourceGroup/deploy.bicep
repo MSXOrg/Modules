@@ -1,14 +1,16 @@
 targetScope = 'subscription'
 
-param resourceGroupName string
+param name string
 
 param department string
 
 resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: resourceGroupName
+  name: name
   location: 'westeurope'
   tags: {
     'ApplicationType': 'Management'
     'Department': department
   }
 }
+
+output name string = resourceGroup.name

@@ -1,9 +1,9 @@
 targetScope = 'resourceGroup'
-param storageaccount string 
+param name string
 
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' = {
-  name: storageaccount
+  name: name
   kind: 'StorageV2'
   location: 'westeurope'
   sku: {
