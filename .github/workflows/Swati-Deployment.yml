@@ -39,5 +39,5 @@ jobs:
           region: 'westeurope'
           ResourceGroupName: "SwatisRG"
           template: 'Modules/StorageAccount/deploy.bicep'
-          parameters: 'Parameters/Swati/storageAccount.parameters'
+          parameters: 'Parameters/Swati/storageAccount.parameters.json'
 
