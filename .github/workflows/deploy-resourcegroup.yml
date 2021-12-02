@@ -26,3 +26,4 @@ jobs:
           region: 'westeurope'
           template: 'Modules/ResourceGroup/deploy.bicep'
           parameters: 'Parameters/parameters-swatiRG.json'
+

@@ -1,8 +1,7 @@
-name: Test resource group deployment 
+name: Test resource group deployment
 
 # Controls when the workflow will run
-on:[push]
-
+on: [push]
 
 jobs:
   deploy:
