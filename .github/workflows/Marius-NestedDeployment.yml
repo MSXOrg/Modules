@@ -1,0 +1,33 @@
+name: Marius Nested RG and SA deployment
+
+# Controls when the workflow will run
+on:
+  push:
+    paths:
+      - ".github/workflows/Marius-Deployment.yml"
+      - "Parameters/Marius/**"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: S001DEMOSUB
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Azure Resource Manager (ARM) Template
+        id: rgDeploy
+        uses: Azure/arm-deploy@v1
+        with:
+          scope: 'subscription'
+          region: 'westeurope'
+          template: 'Solutions/RGwithSA/deploy.bicep'
+          parameters: 'Parameters/Marius/rgandsa.parameters.json'
