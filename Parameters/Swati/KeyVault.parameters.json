@@ -4,6 +4,10 @@
     "parameters": {
         "keyVaultName": {
             "value": "kvSwati"
+        },
+
+        "tenantId": {
+            "value": "b340e746-0ce3-4882-8b4a-467998590b69"
         }
     }
 }
