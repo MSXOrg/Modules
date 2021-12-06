@@ -7,6 +7,8 @@ param accessPolicies array
 
 param tenantId string = subscription().tenantId
 
+param deployment bool
+
 param location string = resourceGroup().location
 
 resource keyvault 'Microsoft.KeyVault/vaults@2019-09-01' = {
@@ -20,6 +22,7 @@ resource keyvault 'Microsoft.KeyVault/vaults@2019-09-01' = {
       family: 'A'
     }
     tenantId: tenantId
+    enabledForDeployment: deployment
   }
 
 }
