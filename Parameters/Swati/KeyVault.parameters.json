@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "keyVaultName": {
-            "value": "kvSwati"
+            "value": "kvSwati1"
         },
         "accessPolicies": {
             "value": [
@@ -19,7 +19,6 @@
                             "Import",
                             "Delete",
                             "Recover",
-                            "Backup",
                             "Restore"
                         ],
                         "secrets": [
