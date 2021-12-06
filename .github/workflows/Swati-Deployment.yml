@@ -32,7 +32,7 @@ jobs:
           template: 'Modules/ResourceGroup/deploy.bicep'
           parameters: 'Parameters/Swati/resourceGroup.parameters.json'
 
-      - name: Deploy Azure Resource Manager (ARM) Template
+      - name: Deploy Storage Account (ARM) Template
         uses: Azure/arm-deploy@v1
         with:
           scope: 'resourcegroup'
@@ -40,4 +40,12 @@ jobs:
           ResourceGroupName: "SwatisRG"
           template: 'Modules/StorageAccount/deploy.bicep'
           parameters: 'Parameters/Swati/storageAccount.parameters.json'
+
+      - name: Deploy Key Vault (ARM) Template
+        uses: Azure/arm-deploy@v1
+        with:
+          scope: 'resourcegroup'
+          ResourceGroupName: "SwatisRG"
+          template: 'Modules/Keyvault/deploy.bicep'
+          parameters: 'Parameters/Swati/KeyVault.parameters.json'
 
