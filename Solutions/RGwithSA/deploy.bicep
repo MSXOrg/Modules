@@ -4,6 +4,9 @@ param name string
 
 param department string
 
+@description('Returns the list of subscriptions for the given department')
+param maintenancewindow string
+
 module rg '../../Modules/ResourceGroup/deploy.bicep' = {
     name: '${name}-rg-deployment'
     params: {
