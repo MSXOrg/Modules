@@ -1,11 +1,13 @@
-name: Marius Resource Group deployment
+name: Marius Nested RG and SA deployment
 
 # Controls when the workflow will run
 on:
   push:
     paths:
-      - ".github/workflows/Marius-Deployment.yml"
-      - "Parameters/Marius/**"
+      - ".github/workflows/Marius-NestedDeployment.yml"
+      - "Parameters/Marius/rgandsa.parameters.json"
+      - "Solutions/**"
+      - "Modules/**"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,14 +31,5 @@ jobs:
         with:
           scope: 'subscription'
           region: 'westeurope'
-          template: 'Modules/ResourceGroup/deploy.bicep'
-          parameters: 'Parameters/Marius/resourceGroup.parameters.json'
-
-      - name: Deploy Azure Resource Manager (ARM) Template
-        uses: Azure/arm-deploy@v1
-        with:
-          scope: 'resourcegroup'
-          region: 'westeurope'
-          ResourceGroupName: '${{ steps.rgDeploy.outputs.name }}'
-          template: 'Modules/StorageAccount/deploy.bicep'
-          parameters: 'Parameters/Marius/storageAccount.parameters.json'
+          template: 'Solutions/RGwithSA/deploy.bicep'
+          parameters: 'Parameters/Marius/rgandsa.parameters.json'
