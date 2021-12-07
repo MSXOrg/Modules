@@ -49,3 +49,9 @@ jobs:
           template: 'Modules/Keyvault/deploy.bicep'
           parameters: 'Parameters/Swati/KeyVault.parameters.json'
 
+      - name: Deploy Management group
+        uses: Azure/arm-deploy@v1
+        with:
+          template: 'Modules/ManagementGroup/deploy.bicep'
+          parameters: 'Parameters/Swati/managementGroup.parameters.json'
+
