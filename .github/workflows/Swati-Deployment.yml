@@ -52,8 +52,8 @@ jobs:
       - name: Deploy Management group
         uses: Azure/arm-deploy@v1
         with:
+          scope: 'managementgroup'
           managementGroupId: testmg
-          ResourceGroupName: "SwatisRG"
           template: 'Modules/ManagementGroup/deploy.bicep'
           parameters: 'Parameters/Swati/managementGroup.parameters.json'
 
