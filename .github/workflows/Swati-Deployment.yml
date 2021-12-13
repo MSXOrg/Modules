@@ -56,6 +56,6 @@ jobs:
           scope: 'managementgroup'
           region: 'westeurope'
           managementGroupId: b340e746-0ce3-4882-8b4a-467998590b69
-          template: 'Modules/ManagementGroup/deploy.bicep'
-          parameters: 'Parameters/Swati/managementGroup.parameters.json'
+          template: 'Modules/MgHierarchy\deploy.bicep'
+          parameters: 'Parameters/Swati/mgHierarchy.parameter.json'
 
