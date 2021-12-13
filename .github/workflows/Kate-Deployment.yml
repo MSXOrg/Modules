@@ -37,7 +37,7 @@ jobs:
           scope: 'subscription'
           region: 'westeurope'
           template: 'Modules/ResourceGroup/deploy.bicep'
-          parameters: 'Parameters/Kate/parameters1.json'
+          parameters: 'Parameters/Kate/ResourceGroupParametersKate.json'
 
       - name: DeployStorageAccount
         uses: Azure/arm-deploy@v1
