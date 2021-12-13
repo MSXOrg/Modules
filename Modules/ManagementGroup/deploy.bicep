@@ -1,4 +1,4 @@
-targetScope = 'tenant'
+targetScope = 'managementGroup'
 
 param managementGroupName string
 param displayMgName string
@@ -10,3 +10,5 @@ resource mgName 'Microsoft.Management/managementGroups@2021-04-01' = {
     displayName: displayMgName
   }
 }
+
+output newmgname string = managementGroupName
