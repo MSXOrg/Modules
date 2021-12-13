@@ -33,6 +33,7 @@ jobs:
 
       - name: DeployResourceGroup
         uses: Azure/arm-deploy@v1
+        id: deploy
         with:
           scope: 'subscription'
           region: 'westeurope'
@@ -43,7 +44,9 @@ jobs:
         uses: Azure/arm-deploy@v1
         with:
           scope: 'resourcegroup'
-          ResourceGroupName: 'KatesRG'
+          ResourceGroupName: ${{ steps.deploy.outputs.name }}
           region: 'westeurope'
           template: 'Modules/StorageAccount/deploy.bicep'
           parameters: 'Parameters/Kate/StorageAccountKate.json'
+
+
