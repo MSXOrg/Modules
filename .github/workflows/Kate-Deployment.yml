@@ -2,6 +2,7 @@ name: Kates Resource Group deployment
 
 # Controls when the workflow will run
 on: 
+  workflow_dispatch: 
   push:
     paths:
       - ".github/workflows/Kate-Deployment.yml"
@@ -21,17 +22,31 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: checkOutRepository
+        uses: actions/checkout@v2
+        
 
-      - uses: Azure/login@v1
+      - name: LoginToAzure
+        uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy Azure Resource Manager (ARM) Template
+      - name: DeployResourceGroup
         uses: Azure/arm-deploy@v1
+        id: deploy
         with:
           scope: 'subscription'
           region: 'westeurope'
           template: 'Modules/ResourceGroup/deploy.bicep'
-          parameters: 'Parameters/Kate/parameters1.json'
+          parameters: 'Parameters/Kate/ResourceGroupParametersKate.json'
+
+      - name: DeployStorageAccount
+        uses: Azure/arm-deploy@v1
+        with:
+          scope: 'resourcegroup'
+          ResourceGroupName: ${{ steps.deploy.outputs.name }}
+          region: 'westeurope'
+          template: 'Modules/StorageAccount/deploy.bicep'
+          parameters: 'Parameters/Kate/StorageAccountKate.json'
+
 
