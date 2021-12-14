@@ -11,6 +11,8 @@ resource mainMgGroup 'Microsoft.Management/managementGroups@2021-04-01' = {
   }
 }
 
+
+
 output newmgname string = mainManagementGroupName
 output groupId string = mainMgGroup.id
 

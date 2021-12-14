@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "managementGroupName": {
-            "value": "SwatiMG"
+            "value": "01SwatiMG"
         },
         "displayMgName": {
-            "value": "SwatiMG"
+            "value": "01SwatiMG"
         }
     }
 }
