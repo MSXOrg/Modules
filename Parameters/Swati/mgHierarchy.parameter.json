@@ -3,16 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "mainManagementGroupName": {
-            "value": "SwatiMg01"
+            "value": "SwatiMg02"
         },
         "mainMgDisplayName": {
-            "value": "SwatiMg01"
+            "value": "SwatiMg02"
         },
         "childMgGroupName": {
-            "value": "test"
+            "value": "test02"
         },
         "childMgDisplayName": {
-            "value": "Test"
+            "value": "Test02"
         }
     }
 }

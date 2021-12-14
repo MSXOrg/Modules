@@ -1,0 +1,38 @@
+name: Swatis MG deployment
+
+# Controls when the workflow will run
+on: 
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/Swati-MGDeploy.yml"
+      - "Parameters/Swati/**"
+    
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: SwatiSub
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Azure Login Task
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Management group
+        uses: Azure/arm-deploy@v1
+        with:
+          scope: 'managementgroup'
+          region: 'westeurope'
+          managementGroupId: b340e746-0ce3-4882-8b4a-467998590b69
+          template: 'Modules/MgHierarchy/deploy.bicep'
+          parameters: 'Parameters/Swati/mgHierarchy.parameter.json'
+
